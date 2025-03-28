@@ -70,7 +70,7 @@ def run_test():
 
 # --- GUI Layout with Green Border and Signature ---
 root = tk.Tk()
-root.title("Mutual Authentication Tester")
+root.title("Mutual Authentication Tester V1.0")
 root.configure(bg="green")  # Green border around the app
 
 # White inner frame (main content area)
