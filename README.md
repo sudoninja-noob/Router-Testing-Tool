@@ -1,8 +1,5 @@
-# Security Testing Tools Mapping – ITSAR201012401 (IP Router)
+# Security Testing Tools Mapping
 
-This document maps security testing tools and techniques to the **Common Security Requirements (CSR)** as specified in **ITSAR201012401 – IP Routers** issued under MTCTE by NCCS, Department of Telecommunications, India.
-
----
 
 ## Chapter 1: Common Security Requirements
 
@@ -148,7 +145,5 @@ This document maps security testing tools and techniques to the **Common Securit
 | **1.12.8** | Crypto module control tools, config file review |
 | **1.12.9** | QoS/firewall policy validation, routing table inspection |
 
----
 
-> 📘 **Note**: This mapping ensures practical alignment between conformance testing requirements and security validation tools used during testing of IP Routers under MTCTE by NCCS, DoT.
 
