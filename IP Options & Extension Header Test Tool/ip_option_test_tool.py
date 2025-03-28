@@ -40,7 +40,7 @@ ipv6_ext_headers = {
 class IPTestTool:
     def __init__(self, root):
         self.root = root
-        self.root.title("IP Option & Extension Header Test Tool")
+        self.root.title("IP Option & Extension Header Test Tool v1.0")
         self.notebook = ttk.Notebook(self.root)
         self.ipv4_tab = tk.Frame(self.notebook)
         self.ipv6_tab = tk.Frame(self.notebook)
