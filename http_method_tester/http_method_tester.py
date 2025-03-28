@@ -7,7 +7,7 @@ import datetime
 class HTTPMethodTester:
     def __init__(self, root):
         self.root = root
-        self.root.title("HTTP Method Tester")
+        self.root.title("HTTP Method Tester v1.0")
 
         # URL Input
         ttk.Label(root, text="Target URL:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
