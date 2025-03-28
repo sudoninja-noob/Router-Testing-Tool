@@ -5,7 +5,7 @@ import os
 import subprocess
 import json
 import csv
-from scapy.all import IP, ICMP, sr1
+from scapy.all import IP, ICMP, sr1, wrpcap
 import openpyxl
 
 ICMP_TYPES = [
@@ -28,10 +28,11 @@ class ICMPTesterGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("ICMP4 and ICMP6 Test Tool v1.0")
-        self.root.geometry("800x550")
+        self.root.geometry("950x550")
         self.root.configure(bg="lightgreen", highlightbackground="green", highlightthickness=5)
 
         self.results = []
+        self.packets = []  # Store sent and received packets
 
         self.setup_widgets()
 
@@ -54,6 +55,7 @@ class ICMPTesterGUI:
         tk.Button(frm_top, text="Export HTML", command=self.export_html).grid(row=0, column=5, padx=5)
         tk.Button(frm_top, text="Export PDF", command=self.export_pdf).grid(row=0, column=6, padx=5)
         tk.Button(frm_top, text="Export Excel", command=self.export_excel).grid(row=0, column=7, padx=5)
+        tk.Button(frm_top, text="Export PCAP", command=self.export_pcap).grid(row=0, column=8, padx=5)
 
         frm_save = tk.Frame(self.root, bg="lightgreen")
         frm_save.pack(pady=5)
@@ -87,6 +89,11 @@ class ICMPTesterGUI:
 
         pkt = IP(dst=target_ip)/ICMP(type=icmp_code)
         response = sr1(pkt, timeout=2, verbose=0)
+
+        # Save packets for PCAP export
+        self.packets.append(pkt)
+        if response:
+            self.packets.append(response)
 
         if response:
             summary = response.summary()
@@ -166,6 +173,18 @@ class ICMPTesterGUI:
 
         wb.save(filename)
         messagebox.showinfo("Export", f"Excel file saved to {filename}")
+
+    def export_pcap(self):
+        if not self.packets:
+            messagebox.showwarning("No Packets", "No packets to export. Run a test first.")
+            return
+
+        filename = filedialog.asksaveasfilename(defaultextension=".pcap", filetypes=[("PCAP Files", "*.pcap")])
+        if not filename:
+            return
+
+        wrpcap(filename, self.packets)
+        messagebox.showinfo("Export", f"PCAP saved to {filename}")
 
     def save_json(self):
         filename = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON Files", "*.json")])
