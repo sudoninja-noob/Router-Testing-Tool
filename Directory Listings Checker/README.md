@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 1. Clone this repo:
 ```bash
-git clone [https://github.com/YOUR_USERNAME/directory-listings-checker.git](https://github.com/sudoninja-noob/Router-Testing-Tool.git
+git clone https://github.com/sudoninja-noob/Router-Testing-Tool.git
 cd directory-listings-checker
 python Directory_Listings _Checker.py
 ```
