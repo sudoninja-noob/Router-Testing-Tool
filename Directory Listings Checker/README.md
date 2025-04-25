@@ -56,7 +56,7 @@ python your_script_name.py
 ---
 
 ## 💻 Screenshot
-(Add screenshot of GUI here if hosting on GitHub)
+![Screenshot](2.png)
 
 ---
 
